@@ -12,7 +12,8 @@ class ExportMapping
     @header = options.header
 
   mapProduct: (product, productTypes) ->
-    productType = productTypes[@typesService.id2index[product.productType.id]]
+    #productType = productTypes[@typesService.id2index[product.productType.id]]
+    productType = productTypes[2]
 
     rows = []
     rows.push @_mapBaseProduct product, productType
@@ -75,6 +76,7 @@ class ExportMapping
 
     if variant.attributes
       for attribute in variant.attributes
+        continue unless @typesService.id2nameAttributeDefMap[productType.id][attribute.name]
         attributeTypeDef = @typesService.id2nameAttributeDefMap[productType.id][attribute.name].type
         if attributeTypeDef.name is CONS.ATTRIBUTE_TYPE_LTEXT
           row = @_mapLocalizedAttribute attribute, productType, row

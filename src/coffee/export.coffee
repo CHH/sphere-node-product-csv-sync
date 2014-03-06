@@ -47,7 +47,7 @@ class Export extends CommonUpdater
         @channelService.getAll @rest
         @customerGroupService.getAll @rest
         @taxService.getAll @rest
-        @productService.getAllExistingProducts @rest, @queryString
+        @getProducts()
       ]
       Q.all(data).then ([productTypes, channels, customerGroups, taxes, products]) =>
         console.log "Number of product types: #{_.size productTypes}."
@@ -68,6 +68,26 @@ class Export extends CommonUpdater
           @returnResult true, 'Export done.', callback
     .fail (msg) =>
       @returnResult false, msg, callback
+
+  getProducts: ->
+    #@productService.getAllExistingProducts @rest, @queryString
+    deferred = Q.defer()
+    fs = require 'fs'
+    fileName = 'backup_d47_master.json'
+    fs.readFile fileName, 'utf8', (err, content) ->
+      if err
+        deferred.reject "Problems on reading file '#{fileName}': " + err
+      else
+        fullProducts = JSON.parse(content).results
+        ps = _.map fullProducts, (p) ->
+          ret = p.masterData.staged
+          ret.id = p.id
+          ret.productType = p.productType
+          ret
+        deferred.resolve ps
+
+    deferred.promise
+
 
   createTemplate: (program, languages, outputFile, allProductTypes = false, callback) ->
     @typesService.getAll(@rest).then (productTypes) =>
