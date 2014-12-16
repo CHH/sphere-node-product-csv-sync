@@ -1,0 +1,75 @@
+{
+  "name": "sphere-node-product-csv-sync",
+  "description": "Import and export your products from/to your SPHERE.IO project.",
+  "version": "0.5.7",
+  "homepage": "https://github.com/sphereio/sphere-node-product-csv-sync",
+  "private": false,
+  "author": {
+    "name": "Hajo Eichler",
+    "email": "hajo.eichler@commercetools.de"
+  },
+  "maintainers": [
+    {
+      "name": "Nicola Molinari",
+      "email": "nicola.molinari@commercetools.de"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sphereio/sphere-node-product-csv-sync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sphereio/sphere-node-product-csv-sync/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/sphereio/sphere-node-product-csv-sync/blob/master/LICENSE-MIT"
+    }
+  ],
+  "bin": {
+    "product-csv-sync": "bin/product-csv-sync"
+  },
+  "main": "main.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "test": "grunt coverage"
+  },
+  "dependencies": {
+    "bluebird": "2.3.x",
+    "commander": "2.3.0",
+    "csv": "0.3.7",
+    "sphere-node-sdk": "1.1.2",
+    "sphere-node-utils": "0.6.0",
+    "optimist": "0.6.1",
+    "prompt": "0.2.14",
+    "underscore": "1.7.0",
+    "underscore.string": "2.4.x",
+    "underscore-mixins": "*"
+  },
+  "devDependencies": {
+    "coveralls": "2.10.0",
+    "grunt": "0.4.4",
+    "grunt-bump": "0.0.13",
+    "grunt-coffeelint": "0.0.8",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-coffee": "0.10.1",
+    "grunt-contrib-concat": "0.4.0",
+    "grunt-contrib-watch": "0.6.1",
+    "grunt-shell": "0.6.4",
+    "istanbul": "0.2.7",
+    "jasmine-node": "1.14.0",
+    "sphere-coffeelint": "git://github.com/sphereio/sphere-coffeelint.git#master"
+  },
+  "keywords": [
+    "sphere",
+    "sphereio",
+    "api",
+    "sync",
+    "import",
+    "export",
+    "csv"
+  ]
+}
